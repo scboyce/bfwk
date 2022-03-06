@@ -21,6 +21,9 @@ jobs:
       - run:
           name: "Connect"
           command: "curl ipinfo.io"
+      - run:
+          name: "ping-it"
+          command: "ping 44.201.46.153"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
