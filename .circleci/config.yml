@@ -24,8 +24,8 @@ jobs:
           name: "My IP"
           command: "curl ipinfo.io"
       - run:
-          name: "Root List"
-          command: "ls -la /"
+          name: "Where is git repo"
+          command: "find / -name \"bfwk\" 2>/dev/null"
       - run:
           name: "install Tree "
           command: "sudo apt update; sudo apt install -y tree"
