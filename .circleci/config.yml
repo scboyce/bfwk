@@ -28,7 +28,7 @@ jobs:
           command: "sudo apt update"
       - run:
           name: "install utilites"
-          command: "sudo apt install -y tree inetutils-ping "
+          command: "sudo apt install -y tree inetutils-ping rsync"
       - run:
           name: "Display Project"
           command: tree ~/project
