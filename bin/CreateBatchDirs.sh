@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################
 # CreateBatchDirs.sh
-# Creates all directories in branch
+# Creates all directories in batch
 
 #-- Process options if any
 Usage="Usage CreateBatchDirs.sh <BatchConfigFile>"
