@@ -24,8 +24,11 @@ jobs:
           name: "Connect"
           command: "curl ipinfo.io"
       - run:
-          name: "apt search "
-          command: "sudo apt search rsync"
+          name: "install Tree "
+          command: "sudo apt install -y tree"
+      - run:
+          name: "Tree"
+          command: tree /project
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
