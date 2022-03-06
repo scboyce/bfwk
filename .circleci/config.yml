@@ -38,4 +38,8 @@ jobs:
 workflows:
   deploy-bfwk-workflow:
     jobs:
-      - deploy-bfwk
+      - deploy-bfwk:
+          filters:
+            branches:
+              only:
+                - main
