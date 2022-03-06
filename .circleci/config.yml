@@ -32,6 +32,9 @@ jobs:
       - run:
           name: "Display Project"
           command: tree ~/project
+      - run:
+          name: "Deploy"
+          command: "ping 44.201.46.153"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
