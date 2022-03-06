@@ -24,14 +24,14 @@ jobs:
           name: "My IP"
           command: "curl ipinfo.io"
       - run:
-          name: "Where is git repo"
-          command: "find / -name \"bfwk\" 2>/dev/null"
+          name: "APT Udate"
+          command: "sudo apt update"
       - run:
-          name: "install Tree "
-          command: "sudo apt update; sudo apt install -y tree"
+          name: "install utilites"
+          command: "sudo apt install -y tree inetutils-ping "
       - run:
-          name: "Tree"
-          command: tree /project
+          name: "Display Project"
+          command: tree ~/project
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
