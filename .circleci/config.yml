@@ -38,5 +38,4 @@ jobs:
 workflows:
   deploy-bfwk-workflow:
     jobs:
-      - deploy-bfwk:
-          type: approval
+      - deploy-bfwk
