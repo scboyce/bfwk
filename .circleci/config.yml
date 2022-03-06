@@ -24,6 +24,9 @@ jobs:
           name: "My IP"
           command: "curl ipinfo.io"
       - run:
+          name: "Root List"
+          command: "ls -la /"
+      - run:
           name: "install Tree "
           command: "sudo apt update; sudo apt install -y tree"
       - run:
