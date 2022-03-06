@@ -22,8 +22,8 @@ jobs:
           name: "Connect"
           command: "curl ipinfo.io"
       - run:
-          name: "tree"
-          command: "tree /project"
+          name: "rsync"
+          command: "rsync"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
