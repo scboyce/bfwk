@@ -11,8 +11,8 @@ jobs:
     circleci_ip_ranges: true # opts the job into the IP ranges feature
     docker:
       - image: cimg/base:stable
-    #machine:
-    #    image: "ubuntu-2004:current"
+    resource_class: medium
+    
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
