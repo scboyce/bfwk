@@ -31,7 +31,7 @@ jobs:
             - "53:dc:fc:06:b4:f7:93:21:2e:e8:81:92:e8:8f:70:f6"
       - run:
           name: "Deploy"
-          command: "rsync -vdiptgoz -r --checksum -e '/usr/bin/ssh -o StrictHostKeyChecking=no' --delete --exclude='.*' ~/project/. ubuntu@44.201.46.153:/opt/bfwk"
+          command: "rsync -vdipgoz -r --checksum -e '/usr/bin/ssh -o StrictHostKeyChecking=no' --delete --exclude='.*' ~/project/. ubuntu@44.201.46.153:/opt/bfwk"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
