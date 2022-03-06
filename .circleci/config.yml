@@ -21,11 +21,11 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - run:
-          name: "Connect"
+          name: "My IP"
           command: "curl ipinfo.io"
       - run:
           name: "install Tree "
-          command: "sudo apt install -y tree"
+          command: "sudo apt update; sudo apt install -y tree"
       - run:
           name: "Tree"
           command: tree /project
