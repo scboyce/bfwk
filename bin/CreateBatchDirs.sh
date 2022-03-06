@@ -1,4 +1,6 @@
 #!/bin/bash
+###############################
+# CreateBatchDirs.sh
 
 #-- Process options if any
 Usage="Usage CreateBatchDirs.sh <BatchConfigFile>"
