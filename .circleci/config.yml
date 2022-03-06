@@ -8,7 +8,7 @@ jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    #circleci_ip_ranges: true # opts the job into the IP ranges feature
+    circleci_ip_ranges: true # opts the job into the IP ranges feature
     docker:
       - image: cimg/base:stable
     #machine:
