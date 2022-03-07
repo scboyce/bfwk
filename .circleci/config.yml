@@ -59,7 +59,7 @@ jobs:
               --delete \
               --exclude='.*' \
               ~/project/. \
-              ubuntu@44.201.46.153:/opt/prod/bfwk"
+              ubuntu@44.201.46.153:/opt/prod/bfwk
 
 workflows:
   deploy-bfwk-dev:
