@@ -26,12 +26,11 @@ jobs:
           name: "Deploy"
           command: |
             rsync -vdipgoz -r --checksum \
-            -e '/usr/bin/ssh \
-            -o StrictHostKeyChecking=no' \
-            --delete \
-            --exclude='.*' \
-            ~/project/. \
-            ubuntu@44.201.46.153:/opt/dev/bfwk
+              -e '/usr/bin/ssh -o StrictHostKeyChecking=no' \
+              --delete \
+              --exclude='.*' \
+              ~/project/. \
+              ubuntu@44.201.46.153:/opt/dev/bfwk
 
   deploy-bfwk-prod:
     circleci_ip_ranges: true # opts the job into the IP ranges feature
@@ -56,11 +55,11 @@ jobs:
           name: "Deploy"
           command: |
             rsync -vdipgoz -r --checksum \
-            -e '/usr/bin/ssh -o StrictHostKeyChecking=no' \
-            --delete \
-            --exclude='.*' \
-            ~/project/. \
-            ubuntu@44.201.46.153:/opt/prod/bfwk"
+              -e '/usr/bin/ssh -o StrictHostKeyChecking=no' \
+              --delete \
+              --exclude='.*' \
+              ~/project/. \
+              ubuntu@44.201.46.153:/opt/prod/bfwk"
 
 workflows:
   deploy-bfwk-dev:
