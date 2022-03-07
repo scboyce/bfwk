@@ -3,7 +3,7 @@
 version: 2.1
 
 jobs:
-  deploy-bfwk:
+  deploy-bfwk-dev:
     circleci_ip_ranges: true # opts the job into the IP ranges feature
     docker:
       - image: cimg/base:stable
@@ -26,18 +26,42 @@ jobs:
           name: "Deploy"
           command: "rsync -vdipgoz -r --checksum -e '/usr/bin/ssh -o StrictHostKeyChecking=no' --delete --exclude='.*' ~/project/. ubuntu@44.201.46.153:/opt/dev/bfwk"
 
-workflows:
   deploy-bfwk-prod:
-    jobs:
-      - deploy-bfwk:
-          filters:
-            branches:
-              only:
-                - main
+    circleci_ip_ranges: true # opts the job into the IP ranges feature
+    docker:
+      - image: cimg/base:stable
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: "My IP"
+          command: |
+            curl ipinfo.io
+      - run:
+          name: "APT Install Utilites"
+          command: |
+            sudo apt update
+            sudo apt install -y tree inetutils-ping rsync
+      - add_ssh_keys:
+          fingerprints:
+            - "53:dc:fc:06:b4:f7:93:21:2e:e8:81:92:e8:8f:70:f6"
+      - run:
+          name: "Deploy"
+          command: "rsync -vdipgoz -r --checksum -e '/usr/bin/ssh -o StrictHostKeyChecking=no' --delete --exclude='.*' ~/project/. ubuntu@44.201.46.153:/opt/prod/bfwk"
+
+workflows:
   deploy-bfwk-dev:
     jobs:
-      - deploy-bfwk:
+      - deploy-bfwk-dev:
           filters:
             branches:
               only:
                 - develop
+  
+  deploy-bfwk-prod:
+    jobs:
+      - deploy-bfwk-prod:
+          filters:
+            branches:
+              only:
+                - main
