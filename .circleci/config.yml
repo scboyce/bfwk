@@ -12,7 +12,8 @@ jobs:
       - checkout
       - run:
           name: "My IP"
-          command: "curl ipinfo.io"
+          command: |
+            curl ipinfo.io
       - run:
           name: "APT Install Utilites"
           command: |
