@@ -43,3 +43,10 @@ workflows:
             branches:
               only:
                 - main
+  deploy-bfwk-dev-workflow:
+    jobs:
+      - deploy-bfwk:
+          filters:
+            branches:
+              only:
+                - develop
