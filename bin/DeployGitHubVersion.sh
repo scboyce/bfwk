@@ -185,7 +185,7 @@ if [[ $Opt_d = "TRUE" ]]; then
 
    rsync --verbose \
          --dry-run \
-         --exclude="__pycache__"
+         --exclude="__pycache__" \
          --dirs \
          --itemize-changes \
          --perms \
@@ -200,7 +200,7 @@ else
    echo
 
    rsync --verbose \
-         --exclude="__pycache__"
+         --exclude="__pycache__" \
          --dirs \
          --itemize-changes \
          --perms \
