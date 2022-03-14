@@ -115,20 +115,29 @@ Hostname=$(echo $HOSTNAME | cut -d"." -f1)
 CurrentDirectory=$(dirname "$0")
 BfDirectory=$(realpath ${CurrentDirectory}/..)
 BfBinDirectory="${BfDirectory}/bin"
+BfConfigDirectory="${BfDirectory}/conf"
 DeployLogDirectory=$(realpath ${BfDirectory}/../deploy)
 TempDirectory="/var/tmp"
 TempGitDirectory="${TempDirectory}/${TimeStamp}"
-GitRemote=$(git remote -v | head -1 | awk '{print $2}')
 
 echo "Deployer: ${deployer}"
 echo "TimeStamp: ${TimeStamp}"
 echo "Hostname: ${Hostname}"
 echo "BfDirectory: ${BfDirectory}"
 echo "BfBinDirectory: ${BfBinDirectory}"
+echo "BfConfigDirectory: ${BfConfigDirectory}"
 echo "DeployLogDirectory: ${DeployLogDirectory}"
 echo "TempDirectory: ${TempDirectory}"
 echo "TempGitDirectory: ${TempGitDirectory}"
+
+#-- Source config file
+. ${BfConfigDirectory}/DeployGitHubVersion.cfg
+
 echo "GitRemote: ${GitRemote}"
+
+if [[ -z "${GitRemote}" ]]; then
+   echo "Error: Unable to determine Git remote."
+fi
 
 echo
 if [[ $Opt_d = "TRUE" ]]; then
@@ -168,7 +177,6 @@ else
 fi
 
 echo
-echo "Starting RSync..."
 
 if [[ $Opt_d = "TRUE" ]]; then
    #-- Dry run
@@ -188,18 +196,19 @@ if [[ $Opt_d = "TRUE" ]]; then
          ${BfDirectory}
 else
    #-- Real run
+   echo "Starting RSync..."
    echo
 
-   #rsync --verbose \
-   #      --exclude="__pycache__"
-   #      --dirs \
-   #      --itemize-changes \
-   #      --perms \
-   #      --recursive \
-   #      --checksum \
-   #      --delete \
-   #      ${TempGitDirectory}/bin \
-   #      ${BfDirectory}
+   rsync --verbose \
+         --exclude="__pycache__"
+         --dirs \
+         --itemize-changes \
+         --perms \
+         --recursive \
+         --checksum \
+         --delete \
+         ${TempGitDirectory}/bin \
+         ${BfDirectory}
 fi
 
 echo "Done."
