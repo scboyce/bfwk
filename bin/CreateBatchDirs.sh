@@ -1,24 +1,33 @@
 #!/bin/bash
-###############################
-# CreateBatchDirs.sh
-# Creates all directories in batch
 
 #-- Process options if any
 Usage="Usage CreateBatchDirs.sh <BatchConfigFile>"
 ConfigFile="${1}"
-#echo "ConfigFile: ${ConfigFile}"
+echo "ConfigFile: ${ConfigFile}"
 
 if [[ -r ${ConfigFile} ]]; then
-   BatchName=$(grep "^BatchName=" ${ConfigFile} | cut -d"=" -f2)
-   #echo "BatchName: ${BatchName}"
+
+   #-- Source it
+   . ${ConfigFile}
+
+   echo "ApplicationName: ${ApplicationName}"
+   echo "BatchName: ${BatchName}"
+
+   echo "BinFileDirectory : ${BinFileDirectory}"
+   echo "LogFileDirectory : ${LogFileDirectory}"
+   echo "DataFileDirectory: ${DataFileDirectory}"
+   echo "WorkFileDirectory: ${WorkFileDirectory}"
+   echo "PollFileDirectory: ${PollFileDirectory}"
+
+   echo "Creating Batch Directories for: ${BatchName}"
+   mkdir -p ${BinFileDirectory}
+   mkdir -p ${LogFileDirectory}
+   mkdir -p ${WorkFileDirectory}
+   mkdir -p ${PollFileDirectory}
+
+   echo "Done"
+
 else
    echo "${Usage}"
    exit 1
 fi
-
-echo "Creating Batch Directories for: ${BatchName}"
-
-mkdir -p /home/ubuntu/bfwk/bin/${BatchName}
-mkdir -p /home/ubuntu/bfwk/data/${BatchName}/poll
-mkdir -p /home/ubuntu/bfwk/data/${BatchName}/work
-mkdir -p /home/ubuntu/bfwk/log/${BatchName}
